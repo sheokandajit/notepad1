@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-content white-text">
+        <div class="row">
+          <div class="col s5">
+            <form #noteForm="ngForm" (ngSubmit)="onSubmit(noteForm)">
+              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="noteService.selectedNote._id">
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="title" #name="ngModel" [(ngModel)]="noteService.selectedNote.title" placeholder="Title" required>
+                  <label>Title :</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="content" #name="ngModel" [(ngModel)]="noteService.selectedNote.content" placeholder="Content">
+                  <label>Content :</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <button class="btn btn-custom right" type="button" (click)="resetForm(noteForm)">Reset</button>
+                  <button class="btn btn-custom right" type="submit" [disabled]="!noteForm.valid">Submit</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col s7">
+              <table class="responsive-table highlight">
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                      <th>Content</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tr *ngFor="let newnote of noteService.notes">
+                    <td>{{newnote.title}}</td>
+                    <td>{{newnote.content}}</td>
+                    <td>
+                        <a class="action-btn" (click)="onEdit(newnote)">
+                          <i class="material-icons">edit</i>
+                        </a>
+                        <a class="action-btn" (click)="onDelete(newnote._id,noteForm)">
+                          <i class="material-icons">delete</i>
+                        </a>
+                      </td>
+                  </tr>
+                </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
