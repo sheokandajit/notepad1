@@ -1,9 +1,10 @@
 {
   "name": "angular-app",
   "version": "0.0.0",
-  "license": "ISC",
-  "name": "nodejs",
-  "version": "12.13.1",
+  "license": "",
+  "engines": {
+    "node": "12.13.1"
+  },
   "description": "",
   "main": "index.js",
   "scripts": {
